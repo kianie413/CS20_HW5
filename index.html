@@ -30,67 +30,70 @@
                 sorted_lotto = lotto[0] + " " + lotto[1] + " " + lotto[2] + " " + lotto[3] + " " + lotto[4];
             }
 
+            function displayLottery(){
+                getLottery(1,48);
+                sortLottery();
+            }
+
             function compare(){
-                if(validateInput()){
-                    num_match = 0, lucky_match = 0;
-                    inputlotto[5] = inputlucky;
-                    for(i = 0; i < 5; i ++){
-                        for(j = 0; j < 5; j ++){
-                            if (inputlotto[i] == lotto[j]){
-                                num_match++;
-                            }
+                num_match = 0, lucky_match = 0;
+                inputlotto[5] = inputlucky;
+                for(i = 0; i < 5; i ++){
+                    for(j = 0; j < 5; j ++){
+                        if (inputlotto[i] == lotto[j]){
+                            num_match++;
                         }
                     }
-                    if(lotto[5] == inputlotto[5]){
-                        lucky_match++;
-                    }
-                    payout();
                 }
+                if(lotto[5] == inputlotto[5]){
+                    lucky_match++;
+                }
+                payout();
             }
 
             function payout(){
                 if(num_match == 5){
                     if (lucky_match == 1){
-                        document.write("You win $7,000 a week for life!");
+                        document.writeln("You win $7,000 a week for life!");
                     }
                     else{
-                        document.write("You win $25,000 a year for life!")
+                        document.writeln("You win $25,000 a year for life!")
                     }
                 }
                 else if(num_match == 4){
                     if (lucky_match == 1){
-                        document.write("You win $5,000!");
+                        document.writeln("You win $5,000!");
                     }
                     else{
-                        document.write("You win $200!");
+                        document.writeln("You win $200!");
                     }
                 }
                 else if(num_match == 3){
                     if(lucky_match == 1){
-                        document.write("You win $150!");
+                        document.writeln("You win $150!");
                     }
                     else{
-                        document.write("You win $20!");
+                        document.writeln("You win $20!");
                     }
                 }
                 else if(num_match == 2){
                     if(lucky_match == 1){
-                        document.write("You win $25!");
+                        document.writeln("You win $25!");
                     }
                     else{
-                        document.write("You win $3!");
+                        document.writeln("You win $3!");
                     }
                 }
                 else if(num_match == 1){
                     if(lucky_match == 1){
-                        document.write("You win $6!");
+                        document.writeln("You win $6!");
                     }
                     else{
-                        document.write("You win $4!");
+                        document.writeln("You win $4!");
                     }
                 }
                 else{
-                    document.write("You win nothing!");
+                    document.writeln("You win nothing!");
                 }
             }
         </script>
@@ -98,16 +101,17 @@
 
     <body> 
         <h1> Lottery Simulator</h1>
-        <button onclick="displayLottery()"> Get Lottery Numbers</button>
-        <p id = "random"></p>
-        <p>Here's the lottery numbers: </p>
-        <p id="sorted"></p>
+        <p>*refresh page to get new lottery numbers*</p>
+        <script lang = "javascript">
+            displayLottery()
+            document.writeln("Lottery Numbers: " + sorted_lotto); 
+            document.writeln("<br> Lucky Ball Number: " + lucky);  
+        </script>
 
         <form id = "inputForm">
             <br>
             Enter 5 lottery numbers (From 1 to 48). Add a space between each number. No duplicates:
             <input type = "text" id="lottonum" name = "lottonum" value = "" >
-            <br>
             <br>
             Enter 1 Lucky Ball number (1-18):
             <input type = "text" id = "luckynum" name = "luckynum" value = "">
@@ -115,12 +119,6 @@
             <br>
             <input type = "button" id = "inputs" value = "Compare" onclick = "compare()">
         </form>
-        <script lang="javascript">
-            function displayLottery(){
-            getLottery(1,48);
-            document.write("Lottery Numbers: " + sorted_lotto);
-        }
-        </script>
         
     </body>
 </html>
