@@ -68,12 +68,12 @@
                         alert("2 matches, but no lucky ball--You win $3!");
                     }
                 }
-                else if(inputMatch == 1){
-                    if(luckyMatch == 1){
-                        alert("1 match, but no lucky ball--You win $6!");
+                else if(luckyMatch == 1){
+                    if(inputMatch == 1){
+                        alert("1 match and lucky ball--You win $6!");
                     }
                     else{
-                        alert("1 match, but no lucky ball--You win $4!");
+                        alert("No matches, but lucky ball--You win $4!");
                     }
                 }
                 else{
@@ -115,7 +115,7 @@
 
         <form id = "inputForm">
             <br>
-            Enter 5 lottery numbers in ascending order (From 1 to 48). Add a space between each number. No duplicates:
+            Enter 5 lottery numbers (From 1 to 48). Add a space between each number. No duplicates:
             <input type = "text" id="lottoNum" name = "lottoNum" value = "" >
             <br>
             Enter 1 Lucky Ball number (1-18):
